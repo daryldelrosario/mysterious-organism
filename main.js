@@ -79,6 +79,24 @@ const printHeader = (msg) => {
   console.log("=".repeat(msgLength));
 }
 
+// Creates instances of pAequor that can survive in their natural environment
+const createSurvivals = num => {
+  let counter = num;
+  let survivors = [];
+  let specimenNum = 1;
+  
+  while(counter > 0) {
+    let strand = pAequorFactory(specimenNum, mockUpStrand());
+    specimenNum++;
+    if(strand.willLikelySurvive()) {
+      survivors.push(strand);
+      counter--;
+    }
+  }
+
+  return survivors;
+}
+
 // Test Functions
 console.log("");
 printHeader("=== TEST FUNCTION: Print Three(3) Strands of P.aequor DNA ==="); // Print 3 random DNA strands of length 15
@@ -110,3 +128,13 @@ const strand4 = pAequorFactory(4, dna4);
 console.log("Strand4: " + strand4._dna.join(" "));
 console.log("Will strand4 likely survive? ");
 console.log(strand4.willLikelySurvive());
+
+console.log("");
+printHeader("=== TEST FUNCTION: Creating 30 instances of survival P.aequor DNA Strands ==="); // Should create 30 instances of survivors
+const survivorArr = createSurvivals(30);
+
+let numSurvivor = 1;
+survivorArr.forEach(strand => {
+  console.log(`No. ${numSurvivor} - ${strand._specimenNum}: ${strand._dna.join(" ")}`);
+  numSurvivor++;
+})
