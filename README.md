@@ -10,18 +10,18 @@ Challenge project to create objects that simulate the DNA of P. aequor for resea
 
 ## Features
 * includes factory function pAequorFactory(`specimenNum, dna`) that produces `pAequorObj`s
-* objects created via pAequorFactory include:
+* `pAequorObj` created via pAequorFactory include functions:
     * mutate()
     * compareDNA(`anotherPAequorObj`)
     * willLikelySurvive()
     * EXTENSION CHALLENGE: complementStrand()
-* helper function:
+* includes helper function:
     * createSurvivals(`num`) 
         * takes in a number of specimens required
         * creates an array of surviving pAequor specimens
-* extension challenges completed by creating new function:
+* completes extension challenges via function:
     * mostRelated(`dnaStrandArr`)
         * takes in an array of `pAequorObj`s
-        * returns the specimen numbers and percentage of mostly related survivors
-        * able to print full report if un-comment the comment block in the hardcode function
+        * returns specimen numbers and percentage of most related survivors
+        * able to print full comparison report if un-comment the comment block in the hardcode function
 * all functions tested and passed
