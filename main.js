@@ -48,11 +48,16 @@ const pAequorFactory = (specimenNum, dna) => {
       }
       commonPercentage = ((commonDNACounter / strandLength) * 100).toFixed(2);
 
+      // Un-comment the block below if you want to print out the full report for extension challenge
+      /*
       console.log("");
       console.log("There are " + commonDNACounter + " bases in common.");
       console.log("specimen #" + this._specimenNum + " and specimen #" + strand._specimenNum + " have " + commonPercentage + 
         "% DNA in common.");
+      */
 
+      // For extension challenge adding a return
+      return commonPercentage;
     },
     willLikelySurvive() {
       let numC = 0;
@@ -121,6 +126,24 @@ const createSurvivals = num => {
   return survivors;
 }
 
+// Compares the strands within an array and returns the most related instance of pAequor
+const mostRelated = dnaStrandArr => {
+  let percentage = 0;
+  let mostRelatedStrand = "";
+  dnaStrandArr.forEach(currentStrand => {
+    dnaStrandArr.forEach(comparedStrand => {
+      if(currentStrand !== comparedStrand) {
+        let match = currentStrand.compareDNA(comparedStrand);
+        if(match > percentage) {
+          percentage = match;
+          mostRelatedStrand = `The most related specimens are ${currentStrand._specimenNum} and ${comparedStrand._specimenNum} with ${percentage}%`;
+        }
+      }
+    })
+  })
+  return mostRelatedStrand;
+}
+
 // Test Functions
 
 console.log("");
@@ -133,7 +156,6 @@ console.log("This is strand1: " + strand1._dna.join(" "));
 console.log("This is strand2: " + strand2._dna.join(" "));
 console.log("This is strand3: " + strand3._dna.join(" "));
 
-/*
 console.log("");
 printHeader("=== TEST FUNCTION: Mutates Strand 2 ==="); // Mutates one base in strand 2
 console.log("Original strand2: " + strand2._dna.join(" "));
@@ -164,9 +186,15 @@ survivorArr.forEach(strand => {
   console.log(`No. ${numSurvivor} - ${strand._specimenNum}: ${strand._dna.join(" ")}`);
   numSurvivor++;
 })
-*/
+
 console.log("");
 printHeader("=== TEST EXTENSION FUNCTION: Creates a complement strand ==="); // Should print original and complement dna for strand1
 strand1c = strand1.complementStrand();
 console.log("Original strand1: " + strand1._dna.join(" "));
 console.log("Complement strand1: " + strand1c.join(" "));
+
+console.log("");
+printHeader("=== TEST EXTENSION CHALLENGE: Find the two most related instances of pAequor ==="); // prints out most related specimens
+let doppleGanger = mostRelated(survivorArr);
+console.log("From the survivor array above, check below for results: ");
+console.log(doppleGanger);
