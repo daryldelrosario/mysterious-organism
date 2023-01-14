@@ -17,10 +17,11 @@ Challenge project to create objects that simulate the DNA of P. aequor for resea
     * EXTENSION CHALLENGE: complementStrand()
 * helper function:
     * createSurvivals(`num`) 
-        * creates an array of surviving pAequor specimens
         * takes in a number of specimens required
+        * creates an array of surviving pAequor specimens
 * extension challenges completed by creating new function:
     * mostRelated(`dnaStrandArr`)
         * takes in an array of `pAequorObj`s
         * returns the specimen numbers and percentage
-        * provides a full print out by un-comment comment block in hardcode function
+        * for a full print out report, un-comment the comment block in the hardcode function
+* all functions tested and passed
