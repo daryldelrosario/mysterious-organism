@@ -66,6 +66,30 @@ const pAequorFactory = (specimenNum, dna) => {
         }
       });
       return (numC >= 9 || numG >= 9);
+    },
+    complementStrand() {
+      let currentDNA = this._dna;
+      let complementDNA = [];
+      currentDNA.forEach(letter => {
+        switch(letter) {
+          case "A":
+            complementDNA.push("T");
+            break;
+          case "T":
+            complementDNA.push("A");
+            break;
+          case "C":
+            complementDNA.push("G");
+            break;
+          case "G":
+            complementDNA.push("C");
+            break;
+          default:
+            console.log("Error in process!");
+            break;
+        }
+      })
+      return complementDNA;
     }
   }
 }
@@ -98,6 +122,7 @@ const createSurvivals = num => {
 }
 
 // Test Functions
+
 console.log("");
 printHeader("=== TEST FUNCTION: Print Three(3) Strands of P.aequor DNA ==="); // Print 3 random DNA strands of length 15
 const strand1 = pAequorFactory(1, mockUpStrand());
@@ -108,6 +133,7 @@ console.log("This is strand1: " + strand1._dna.join(" "));
 console.log("This is strand2: " + strand2._dna.join(" "));
 console.log("This is strand3: " + strand3._dna.join(" "));
 
+/*
 console.log("");
 printHeader("=== TEST FUNCTION: Mutates Strand 2 ==="); // Mutates one base in strand 2
 console.log("Original strand2: " + strand2._dna.join(" "));
@@ -138,3 +164,9 @@ survivorArr.forEach(strand => {
   console.log(`No. ${numSurvivor} - ${strand._specimenNum}: ${strand._dna.join(" ")}`);
   numSurvivor++;
 })
+*/
+console.log("");
+printHeader("=== TEST EXTENSION FUNCTION: Creates a complement strand ==="); // Should print original and complement dna for strand1
+strand1c = strand1.complementStrand();
+console.log("Original strand1: " + strand1._dna.join(" "));
+console.log("Complement strand1: " + strand1c.join(" "));
