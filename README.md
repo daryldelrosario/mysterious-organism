@@ -22,6 +22,6 @@ Challenge project to create objects that simulate the DNA of P. aequor for resea
 * extension challenges completed by creating new function:
     * mostRelated(`dnaStrandArr`)
         * takes in an array of `pAequorObj`s
-        * returns the specimen numbers and percentage
+        * returns the specimen numbers and percentage of mostly related survivors
         * for a full print out report, un-comment the comment block in the hardcode function
 * all functions tested and passed
